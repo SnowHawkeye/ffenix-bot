@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.5.10"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 }
 
 group = "me.shadr"
@@ -10,7 +11,6 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
 }
-
 
 dependencies {
     testImplementation(kotlin("test"))
