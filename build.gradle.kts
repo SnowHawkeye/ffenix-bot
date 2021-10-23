@@ -14,11 +14,9 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("com.jessecorbett:diskord-bot:2.1.1")
 
-    implementation("io.ktor:ktor-server-core:1.6.4")
-    implementation("io.ktor:ktor-server-netty:1.6.4")
-    implementation("ch.qos.logback:logback-classic:1.2.5")
+    val kordVersion = "0.8.0-M7"
+    implementation("dev.kord:kord-core:$kordVersion")
 }
 
 tasks {
@@ -31,6 +29,10 @@ tasks.withType<Jar>() {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest { attributes["Main-Class"] = "bot/BotMainKt" }
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    exclude("META-INF/*.SF")
+    exclude("META-INF/*.DSA")
+    exclude("META-INF/*.RSA")
+    exclude("META-INF/INDEX.LIST")
 }
 
 tasks.withType<KotlinCompile>() {
