@@ -177,11 +177,15 @@ Removes the specified achievement.
 
 ## Fun
 
+
 `!quote [number]`  
 `!quote --add quote [--by @user]`  
 `!quote [--number] number --edit quote`  
 `!quote [--number] number --editauthor @user`  
 `!quote [--number] number --remove`
+
+**|||||||| **WITH KORD** ||||||||**
+Consider using [Message Commands](https://discord.com/developers/docs/interactions/application-commands#message-commands).
 
 - Quotes are displayed in italics, between quotation marks, followed by the date at which they were added.   
 - If an author was specified, it is also displayed.  
@@ -192,11 +196,13 @@ an error message is returned.
 - The edit and remove commands require the [archivist permissions](#archivist).
 
 
-
-
 `!bonk @user`
 `!bonk [@user] --count`
 `!bonk --champion`
+
+**|||||||| **WITH KORD** ||||||||**
+Consider using [User Commands](https://discord.com/developers/docs/interactions/application-commands#user-commands).
+
 
 - When a user is bonked, they are attributed the **Horny** role, 
 which grants access to the `#horny-jail`channel. Their nickname is also modified.
@@ -241,6 +247,10 @@ If a user has the role, but not the bot permission, the bot's list must be updat
 
 `!permission --grant permission --to @user `  
 `!permission --remove permission --from @user `
+
+**|||||||| **WITH KORD** ||||||||**
+Consider using [User Commands](https://discord.com/developers/docs/interactions/application-commands#user-commands).
+
 
 Grants or removes the given permission of the given user. 
 This command requires at least [manager permissions](#manager).
@@ -372,4 +382,13 @@ Resets all bot data to what it is when it joins a server.
 - ⚠️**Custom commands and permissions will be lost, 
 as well as scheduling information and all other persistent data.** ⚠️
 
+***
+
+## Other ideas
+
+`/remind me/@able`
+`/rng $number$` `/d2/6/10/20`
+`/catpic`
+
+In the future, currency / gamble system?
 
