@@ -17,6 +17,7 @@ dependencies {
 
     val kordVersion = "0.8.0-M7"
     implementation("dev.kord:kord-core:$kordVersion")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.14.1")
 }
 
 tasks {
