@@ -1,9 +1,9 @@
-package logging
+package utils.logging
 
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 object Log {
 

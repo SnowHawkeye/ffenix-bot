@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.5.10"
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 }
 
 group = "me.shadr"
@@ -20,11 +19,14 @@ dependencies {
     val gsonVersion = "2.8.8"
     val retrofitVersion = "2.9.0"
     val okHttpVersion = "4.9.2"
-    val okHttpMockVersion = "4.9.2"
     val jColorVersion = "5.2.0"
+    val mockitoVersion = "4.0.0"
 
+    // Unit testing
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinTestVersion")
-    testImplementation("com.squareup.okhttp3:mockwebserver:$okHttpMockVersion")
+    testImplementation("com.squareup.okhttp3:mockwebserver:$okHttpVersion")
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation("org.mockito:mockito-inline:$mockitoVersion")
 
     // Kord
     implementation("dev.kord:kord-core:$kordVersion")
@@ -40,6 +42,7 @@ dependencies {
 
     // OkHttp
     implementation("com.squareup.okhttp3:okhttp:$okHttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okHttpVersion")
 
     // JColor
     implementation("com.diogonunes:JColor:$jColorVersion")
