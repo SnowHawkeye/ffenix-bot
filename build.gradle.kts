@@ -19,9 +19,11 @@ dependencies {
     val gsonVersion = "2.8.8"
     val retrofitVersion = "2.9.0"
     val okHttpVersion = "4.9.0"
+    val okHttpMockVersion = "4.9.2"
     val jColorVersion = "5.0.1"
 
     testImplementation(kotlin("test"))
+    testImplementation("com.squareup.okhttp3:mockwebserver:$okHttpMockVersion")
 
     // Kord
     implementation("dev.kord:kord-core:$kordVersion")
