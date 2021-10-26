@@ -14,15 +14,16 @@ repositories {
 
 dependencies {
     // Versions
+    val kotlinTestVersion = "1.5.31"
     val kordVersion = "0.8.0-M7"
     val log4jVersion = "2.14.1"
     val gsonVersion = "2.8.8"
     val retrofitVersion = "2.9.0"
-    val okHttpVersion = "4.9.0"
+    val okHttpVersion = "4.9.2"
     val okHttpMockVersion = "4.9.2"
-    val jColorVersion = "5.0.1"
+    val jColorVersion = "5.2.0"
 
-    testImplementation(kotlin("test"))
+    testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinTestVersion")
     testImplementation("com.squareup.okhttp3:mockwebserver:$okHttpMockVersion")
 
     // Kord
