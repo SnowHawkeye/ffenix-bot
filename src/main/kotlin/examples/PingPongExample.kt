@@ -1,13 +1,13 @@
-package bot
+package examples
 
 import dev.kord.core.Kord
 import dev.kord.core.entity.ReactionEmoji
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.on
-import examples.deleteGuildApplicationCommands
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
+import runtime.FFENIX_BOT_TOKEN_KEY
 
 suspend fun main() {
 

@@ -53,7 +53,7 @@ tasks {
 
 tasks.withType<Jar>() {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    manifest { attributes["Main-Class"] = "bot/BotMainKt" }
+    manifest { attributes["Main-Class"] = "runtime/BotMainKt" }
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
     exclude("META-INF/*.SF")
     exclude("META-INF/*.DSA")

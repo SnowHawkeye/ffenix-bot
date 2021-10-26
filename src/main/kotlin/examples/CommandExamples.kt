@@ -1,6 +1,5 @@
 package examples
 
-import bot.FFENIX_BOT_TOKEN_KEY
 import dev.kord.common.entity.ButtonStyle
 import dev.kord.common.entity.DiscordPartialEmoji
 import dev.kord.common.entity.Snowflake
@@ -24,6 +23,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
+import runtime.FFENIX_BOT_TOKEN_KEY
 
 /**
  * These examples are not well-made, but can be a good reference for future use of the Kord API.
