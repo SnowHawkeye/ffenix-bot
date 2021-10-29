@@ -1,6 +1,6 @@
 package bot.features
 
-import bot.features.data_contract.FeatureDataContract
+import bot.features.core.FeatureDataContract
 import dev.kord.core.Kord
 import dev.kord.core.entity.Guild
 

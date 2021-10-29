@@ -1,4 +1,4 @@
-package bot.features.data_contract
+package bot.features.core
 
 sealed class DataCheckResult {
     object NoData : DataCheckResult()

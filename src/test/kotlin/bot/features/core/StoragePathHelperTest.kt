@@ -1,11 +1,9 @@
-package bot.features.data_contract
+package bot.features.core
 
 import bot.features.Feature
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.Kord
 import org.junit.jupiter.api.Test
-import org.mockito.Mock
-import org.mockito.Mockito
 import kotlin.test.assertEquals
 
 internal class StoragePathHelperTest {
