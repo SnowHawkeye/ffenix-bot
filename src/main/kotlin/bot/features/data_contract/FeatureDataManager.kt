@@ -2,6 +2,7 @@ package bot.features.data_contract
 
 import bot.features.Feature
 import bot.remote.CONFLICT_CODE
+import bot.remote.client.StorageApiClient
 import bot.remote.service.StorageApiServiceWrapper
 import bot.remote.service.model.ApiResponse
 import bot.remote.service.model.ApiResponse.Error
@@ -13,7 +14,8 @@ import bot.remote.service.model.UploadDataRequest
 import bot.remote.service.model.UploadType
 import utils.logging.Log
 
-internal class FeatureDataContractDataSource(val service: StorageApiServiceWrapper) {
+internal object FeatureDataManager {
+    val service: StorageApiServiceWrapper = StorageApiClient.service()
 
     suspend inline fun <reified GlobalData> checkForExistingGlobalData(feature: Feature): DataCheckResult {
         val request = DownloadDataRequest(StoragePathHelper.globalStorageDataPath(feature))
@@ -150,7 +152,5 @@ internal class FeatureDataContractDataSource(val service: StorageApiServiceWrapp
             is Success -> Log.info(successLog)
         }
     }
-
-
 }
 

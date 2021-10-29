@@ -10,14 +10,10 @@ import kotlin.test.assertEquals
 
 internal class StoragePathHelperTest {
 
-    @Mock
-    val dataSource: FeatureDataContractDataSource = Mockito.mock(FeatureDataContractDataSource::class.java)
-
     private val testFeature = object : Feature() {
         override val name: String = "TestFeature"
         override val featureDataContract: FeatureDataContract
             get() = RequiresData.global(
-                dataSource = dataSource,
                 createNewData = { "" },
                 updateExistingData = { "" },
             )

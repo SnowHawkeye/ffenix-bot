@@ -1,7 +1,6 @@
 package bot.features.data_contract
 
 import bot.features.Feature
-import bot.remote.client.StorageApiClient
 import bot.remote.service.JsonAllNotNull
 import com.google.gson.annotations.SerializedName
 import dev.kord.common.entity.Snowflake
@@ -16,17 +15,14 @@ import utils.logging.Log
 internal class FeatureDataContractDataSourceTest
 
 fun main() = runBlocking {
-    testGuildDataCreation()
+    testAllDataCreation()
 }
-
-private val dataSource = FeatureDataContractDataSource(StorageApiClient.service())
 
 suspend fun testGlobalDataCheckNoData() {
     val testFeatureNoData = object : Feature() {
         override val name: String = "TestFeature"
         override val featureDataContract: FeatureDataContract
             get() = RequiresData.global(
-                dataSource = dataSource,
                 createNewData = { "" },
                 updateExistingData = { "" },
             )
@@ -34,7 +30,7 @@ suspend fun testGlobalDataCheckNoData() {
         override suspend fun Kord.addFeature() {}
     }
 
-    val result = dataSource.checkForExistingGlobalData<String>(testFeatureNoData)
+    val result = FeatureDataManager.checkForExistingGlobalData<String>(testFeatureNoData)
     Log.info(result, "FeatureDataContractDataSourceTest.testGlobalDataCheckExistingData()")
 }
 
@@ -48,7 +44,6 @@ suspend fun testGlobalDataCheckExistingData() {
         override val name: String = "TestFeatureWithData"
         override val featureDataContract: FeatureDataContract
             get() = RequiresData.global(
-                dataSource = dataSource,
                 createNewData = { KeyValue("newData") },
                 updateExistingData = { KeyValue("updatedData") },
             )
@@ -56,7 +51,7 @@ suspend fun testGlobalDataCheckExistingData() {
         override suspend fun Kord.addFeature() {}
     }
 
-    val result = dataSource.checkForExistingGlobalData<KeyValue>(testFeatureWithData)
+    val result = FeatureDataManager.checkForExistingGlobalData<KeyValue>(testFeatureWithData)
     Log.info(result, "FeatureDataContractDataSourceTest.testGlobalDataCheckExistingData()")
 
 }
@@ -66,7 +61,6 @@ suspend fun testGuildDataCheckNoData() {
         override val name: String = "testGuildFeatureNoData"
         override val featureDataContract: FeatureDataContract
             get() = RequiresData.global(
-                dataSource = dataSource,
                 createNewData = { "" },
                 updateExistingData = { "" },
             )
@@ -75,7 +69,7 @@ suspend fun testGuildDataCheckNoData() {
     }
 
     val guildId = Snowflake(1000000000)
-    val result = dataSource.checkForExistingGuildData<KeyValue>(testGuildFeatureNoData, guildId)
+    val result = FeatureDataManager.checkForExistingGuildData<KeyValue>(testGuildFeatureNoData, guildId)
     Log.info(result, "FeatureDataContractDataSourceTest.testGuildDataCheckNoData()")
 
 }
@@ -85,7 +79,6 @@ suspend fun testGuildDataCheckExistingData() {
         override val name: String = "testGuildFeatureWithData"
         override val featureDataContract: FeatureDataContract
             get() = RequiresData.guild(
-                dataSource = dataSource,
                 createNewData = { KeyValue("newData") },
                 updateExistingData = { KeyValue("updatedData") },
             )
@@ -94,7 +87,7 @@ suspend fun testGuildDataCheckExistingData() {
     }
 
     val guildId = Snowflake(1000000000)
-    val result = dataSource.checkForExistingGuildData<KeyValue>(testGuildFeatureWithData, guildId)
+    val result = FeatureDataManager.checkForExistingGuildData<KeyValue>(testGuildFeatureWithData, guildId)
     Log.info(result, "FeatureDataContractDataSourceTest.testGuildDataCheckExistingData()")
 
 }
@@ -103,7 +96,6 @@ val testFeatureGlobalDataCreation = object : Feature() {
     override val name: String = "testFeatureGlobalDataCreation"
     override val featureDataContract: FeatureDataContract
         get() = RequiresData.global(
-            dataSource = dataSource,
             createNewData = { KeyValue("newData") },
             updateExistingData = { KeyValue("updatedData") },
         )
@@ -115,7 +107,6 @@ val testFeatureGuildDataCreation = object : Feature() {
     override val name: String = "testFeatureGuildDataCreation"
     override val featureDataContract: FeatureDataContract
         get() = RequiresData.guild(
-            dataSource = dataSource,
             createNewData = { KeyValue("newData") },
             updateExistingData = { KeyValue("updatedData") },
         )
@@ -144,7 +135,6 @@ val testFeatureAllData = object : Feature() {
     override val name: String = "testFeatureAllData"
     override val featureDataContract: FeatureDataContract
         get() = RequiresData.globalAndGuild(
-            dataSource = dataSource,
             createNewGlobalData = { KeyValue("newGlobalData") },
             updateExistingGlobalData = { KeyValue("updatedGlobalData") },
             createNewGuildData = { KeyValue("newGuildData") },
