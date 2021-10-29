@@ -4,6 +4,7 @@ import bot.features.Feature
 import dev.kord.core.Kord
 import dev.kord.core.event.guild.GuildCreateEvent
 import dev.kord.core.on
+import kotlinx.coroutines.flow.collect
 import utils.withEach
 
 /**
@@ -18,14 +19,16 @@ class FFEnixBot(
      * Starts the bot's execution.
      */
     suspend fun start() = with(client) {
-        setupDataStructure()
+        setup()
         login()
     }
 
     /**
-     * Sets up the bot's data structure and adds the given [features].
+     * Sets up the bot and adds the given [features].
      */
-    private suspend fun setupDataStructure() {
+    private suspend fun setup() {
+        deleteExistingCommands()
+
         features.withEach {
             initializeGlobalData()
             addTo(client)
@@ -35,5 +38,12 @@ class FFEnixBot(
         client.on<GuildCreateEvent> { features.withEach { initializeGuildData(guild) } }
     }
 
-
+    private suspend fun deleteExistingCommands() = with(client) {
+        guilds.collect { guild ->
+            getGuildApplicationCommands(guild.id).collect {
+                it.delete()
+            }
+        }
+        globalCommands.collect { it.delete() }
+    }
 }
