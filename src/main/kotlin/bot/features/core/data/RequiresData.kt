@@ -1,4 +1,4 @@
-package bot.features.core
+package bot.features.core.data
 
 import bot.features.Feature
 import dev.kord.core.entity.Guild
@@ -71,7 +71,8 @@ internal object RequiresData {
                 FeatureDataManager.createGlobalData(feature, data)
             }
             is DataCheckResult.ExistingData -> {
-                val data = updateExistingGlobalData(existingData)
+                val oldData = existingData.data
+                val data = updateExistingGlobalData(oldData)
                 FeatureDataManager.updateGlobalData(feature, data)
             }
         }
@@ -89,7 +90,8 @@ internal object RequiresData {
                 FeatureDataManager.createGuildData(feature, data, guild.id)
             }
             is DataCheckResult.ExistingData -> {
-                val data = updateExistingGuildData(existingData)
+                val oldData = existingData.data
+                val data = updateExistingGuildData(oldData)
                 FeatureDataManager.updateGuildData(feature, data, guild.id)
             }
         }

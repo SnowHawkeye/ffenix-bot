@@ -1,6 +1,7 @@
 package bot.remote
 
 // GENERAL
+internal const val DATE_SERIALIZATION_PATTERN = "EEE, d MMM yyyy"
 internal const val DROPBOX_API_TOKEN_KEY = "DROPBOX_FFENIX_BOT_API_TOKEN"
 internal const val EMPTY_BASE_URL = "http://localhost/"
 internal const val DROPBOX_API_BASE_URL = "https://api.dropboxapi.com/2/"

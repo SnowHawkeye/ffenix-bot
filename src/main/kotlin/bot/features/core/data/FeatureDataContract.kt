@@ -1,4 +1,4 @@
-package bot.features.core
+package bot.features.core.data
 
 import bot.features.Feature
 import dev.kord.core.entity.Guild

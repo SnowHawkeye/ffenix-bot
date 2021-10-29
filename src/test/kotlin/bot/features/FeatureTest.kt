@@ -1,6 +1,6 @@
 package bot.features
 
-import bot.features.core.FeatureDataContract
+import bot.features.core.data.FeatureDataContract
 import dev.kord.core.Kord
 import dev.kord.core.entity.Guild
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,7 +20,9 @@ internal class FeatureTest {
         override val featureDataContract: FeatureDataContract
             get() = contract
 
-        override suspend fun Kord.addFeature() {}
+        override suspend fun Kord.addFeatureResponses() {}
+        override suspend fun Kord.addFeatureGuildCommands() {}
+        override suspend fun Kord.addFeatureGlobalCommands() {}
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)

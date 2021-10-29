@@ -1,4 +1,4 @@
-package bot.features.core
+package bot.features.core.data
 
 sealed class DataCheckResult {
     object NoData : DataCheckResult()

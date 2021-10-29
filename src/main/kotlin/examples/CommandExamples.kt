@@ -10,11 +10,7 @@ import dev.kord.core.behavior.interaction.respondPublic
 import dev.kord.core.entity.application.GuildChatInputCommand
 import dev.kord.core.entity.application.GuildMessageCommand
 import dev.kord.core.entity.application.GuildUserCommand
-import dev.kord.core.event.interaction.GuildButtonInteractionCreateEvent
-import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
-import dev.kord.core.event.interaction.GuildMessageCommandInteractionCreateEvent
-import dev.kord.core.event.interaction.GuildUserCommandInteractionCreateEvent
-import dev.kord.core.event.interaction.SelectMenuInteractionCreateEvent
+import dev.kord.core.event.interaction.*
 import dev.kord.core.on
 import dev.kord.rest.builder.interaction.boolean
 import dev.kord.rest.builder.message.create.actionRow

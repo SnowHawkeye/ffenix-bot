@@ -1,17 +1,11 @@
-package bot.features.core
+package bot.features.core.data
 
 import bot.features.Feature
 import bot.remote.CONFLICT_CODE
 import bot.remote.client.StorageApiClient
 import bot.remote.service.StorageApiServiceWrapper
-import bot.remote.service.model.ApiResponse
-import bot.remote.service.model.ApiResponse.Error
-import bot.remote.service.model.ApiResponse.Failure
-import bot.remote.service.model.ApiResponse.Success
-import bot.remote.service.model.CreateFolderRequest
-import bot.remote.service.model.DownloadDataRequest
-import bot.remote.service.model.UploadDataRequest
-import bot.remote.service.model.UploadType
+import bot.remote.service.model.*
+import bot.remote.service.model.ApiResponse.*
 import utils.logging.Log
 
 internal object FeatureDataManager {

@@ -1,6 +1,9 @@
 package bot.features.core
 
 import bot.features.Feature
+import bot.features.core.data.FeatureDataContract
+import bot.features.core.data.RequiresData
+import bot.features.core.data.StoragePathHelper
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.Kord
 import org.junit.jupiter.api.Test
@@ -16,7 +19,9 @@ internal class StoragePathHelperTest {
                 updateExistingData = { "" },
             )
 
-        override suspend fun Kord.addFeature() {}
+        override suspend fun Kord.addFeatureResponses() {}
+        override suspend fun Kord.addFeatureGuildCommands() {}
+        override suspend fun Kord.addFeatureGlobalCommands() {}
     }
 
     @Test

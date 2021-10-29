@@ -1,11 +1,6 @@
 package bot.remote.service
 
-import bot.remote.ARGUMENT_HEADER_KEY
-import bot.remote.CREATE_FOLDER_PATH
-import bot.remote.DOWNLOAD_FILE_PATH
-import bot.remote.JSON_CONTENT_TYPE_HEADER
-import bot.remote.TEXT_CONTENT_TYPE_HEADER
-import bot.remote.UPLOAD_FILE_PATH
+import bot.remote.*
 import bot.remote.service.model.CreateFolderRequest
 import retrofit2.Response
 import retrofit2.http.Body

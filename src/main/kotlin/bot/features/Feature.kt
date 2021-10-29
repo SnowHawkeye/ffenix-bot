@@ -1,6 +1,6 @@
 package bot.features
 
-import bot.features.core.FeatureDataContract
+import bot.features.core.data.FeatureDataContract
 import dev.kord.core.Kord
 import dev.kord.core.entity.Guild
 
@@ -18,8 +18,16 @@ abstract class Feature {
     /**
      * Adds functionality to the given Kord instance.
      */
-    suspend fun addTo(receiver: Kord) {
-        receiver.addFeature()
+    suspend fun addGuildCommands(receiver: Kord) {
+        receiver.addFeatureGuildCommands()
+    }
+
+    suspend fun addGlobalCommands(receiver: Kord) {
+        receiver.addFeatureGlobalCommands()
+    }
+
+    suspend fun addResponses(receiver: Kord) {
+        receiver.addFeatureResponses()
     }
 
     /**
@@ -28,5 +36,7 @@ abstract class Feature {
     suspend fun initializeGlobalData() = featureDataContract.initializeGlobalData(this)
     suspend fun initializeGuildData(guild: Guild) = featureDataContract.initializeGuildData(this, guild)
 
-    protected abstract suspend fun Kord.addFeature()
+    protected abstract suspend fun Kord.addFeatureGuildCommands()
+    protected abstract suspend fun Kord.addFeatureGlobalCommands()
+    protected abstract suspend fun Kord.addFeatureResponses()
 }

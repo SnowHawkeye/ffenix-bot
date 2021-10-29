@@ -1,6 +1,9 @@
 package bot.features.core
 
 import bot.features.Feature
+import bot.features.core.data.FeatureDataContract
+import bot.features.core.data.FeatureDataManager
+import bot.features.core.data.RequiresData
 import bot.remote.service.JsonAllNotNull
 import com.google.gson.annotations.SerializedName
 import dev.kord.common.entity.Snowflake
@@ -27,7 +30,9 @@ suspend fun testGlobalDataCheckNoData() {
                 updateExistingData = { "" },
             )
 
-        override suspend fun Kord.addFeature() {}
+        override suspend fun Kord.addFeatureResponses() {}
+        override suspend fun Kord.addFeatureGuildCommands() {}
+        override suspend fun Kord.addFeatureGlobalCommands() {}
     }
 
     val result = FeatureDataManager.checkForExistingGlobalData<String>(testFeatureNoData)
@@ -48,7 +53,9 @@ suspend fun testGlobalDataCheckExistingData() {
                 updateExistingData = { KeyValue("updatedData") },
             )
 
-        override suspend fun Kord.addFeature() {}
+        override suspend fun Kord.addFeatureResponses() {}
+        override suspend fun Kord.addFeatureGuildCommands() {}
+        override suspend fun Kord.addFeatureGlobalCommands() {}
     }
 
     val result = FeatureDataManager.checkForExistingGlobalData<KeyValue>(testFeatureWithData)
@@ -65,7 +72,9 @@ suspend fun testGuildDataCheckNoData() {
                 updateExistingData = { "" },
             )
 
-        override suspend fun Kord.addFeature() {}
+        override suspend fun Kord.addFeatureResponses() {}
+        override suspend fun Kord.addFeatureGuildCommands() {}
+        override suspend fun Kord.addFeatureGlobalCommands() {}
     }
 
     val guildId = Snowflake(1000000000)
@@ -83,7 +92,9 @@ suspend fun testGuildDataCheckExistingData() {
                 updateExistingData = { KeyValue("updatedData") },
             )
 
-        override suspend fun Kord.addFeature() {}
+        override suspend fun Kord.addFeatureResponses() {}
+        override suspend fun Kord.addFeatureGuildCommands() {}
+        override suspend fun Kord.addFeatureGlobalCommands() {}
     }
 
     val guildId = Snowflake(1000000000)
@@ -100,7 +111,9 @@ val testFeatureGlobalDataCreation = object : Feature() {
             updateExistingData = { KeyValue("updatedData") },
         )
 
-    override suspend fun Kord.addFeature() {}
+    override suspend fun Kord.addFeatureResponses() {}
+    override suspend fun Kord.addFeatureGuildCommands() {}
+    override suspend fun Kord.addFeatureGlobalCommands() {}
 }
 
 val testFeatureGuildDataCreation = object : Feature() {
@@ -111,7 +124,9 @@ val testFeatureGuildDataCreation = object : Feature() {
             updateExistingData = { KeyValue("updatedData") },
         )
 
-    override suspend fun Kord.addFeature() {}
+    override suspend fun Kord.addFeatureResponses() {}
+    override suspend fun Kord.addFeatureGuildCommands() {}
+    override suspend fun Kord.addFeatureGlobalCommands() {}
 }
 
 @Mock
@@ -141,7 +156,9 @@ val testFeatureAllData = object : Feature() {
             updateExistingGuildData = { KeyValue("updatedGlobalData") },
         )
 
-    override suspend fun Kord.addFeature() {}
+    override suspend fun Kord.addFeatureResponses() {}
+    override suspend fun Kord.addFeatureGuildCommands() {}
+    override suspend fun Kord.addFeatureGlobalCommands() {}
 }
 
 suspend fun testAllDataCreation() {

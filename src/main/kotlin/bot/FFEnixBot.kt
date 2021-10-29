@@ -5,6 +5,7 @@ import dev.kord.core.Kord
 import dev.kord.core.event.guild.GuildCreateEvent
 import dev.kord.core.on
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.toList
 import utils.withEach
 
 /**
@@ -28,22 +29,24 @@ class FFEnixBot(
      */
     private suspend fun setup() {
         deleteExistingCommands()
-
-        features.withEach {
-            initializeGlobalData()
-            addTo(client)
-        }
-
         // Received both on startup and when joining a new guild
-        client.on<GuildCreateEvent> { features.withEach { initializeGuildData(guild) } }
+        client.on<GuildCreateEvent> {
+            features.withEach {
+                addGuildCommands(client)
+                initializeGuildData(guild)
+            }
+        }
+        features.withEach {
+            addGlobalCommands(client)
+            addResponses(client)
+            initializeGlobalData()
+        }
     }
 
     private suspend fun deleteExistingCommands() = with(client) {
         guilds.collect { guild ->
-            getGuildApplicationCommands(guild.id).collect {
-                it.delete()
-            }
+            getGuildApplicationCommands(guild.id).toList().forEach { it.delete() }
         }
-        globalCommands.collect { it.delete() }
+        globalCommands.toList().forEach { it.delete() }
     }
 }

@@ -1,6 +1,7 @@
 package bot.remote.client
 
 import bot.remote.AUTHORIZATION_HEADER_KEY
+import bot.remote.DATE_SERIALIZATION_PATTERN
 import bot.remote.DROPBOX_API_TOKEN_KEY
 import bot.remote.EMPTY_BASE_URL
 import bot.remote.service.StorageApiService
@@ -18,7 +19,7 @@ internal object StorageApiClient {
 
     fun service() = StorageApiServiceWrapper(apiService, gson)
 
-    private val gson: Gson by lazy { GsonBuilder().setLenient().create() }
+    private val gson: Gson by lazy { GsonBuilder().setLenient().setDateFormat(DATE_SERIALIZATION_PATTERN).create() }
 
     private val httpClient: OkHttpClient by lazy {
         OkHttpClient.Builder().apply {

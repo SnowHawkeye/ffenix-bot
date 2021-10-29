@@ -1,9 +1,7 @@
 package bot.remote.service
 
 import bot.remote.service.model.ApiResponse
-import bot.remote.service.model.ApiResponse.Error
-import bot.remote.service.model.ApiResponse.Failure
-import bot.remote.service.model.ApiResponse.Success
+import bot.remote.service.model.ApiResponse.*
 import bot.remote.service.model.CreateFolderRequest
 import bot.remote.service.model.DownloadDataRequest
 import bot.remote.service.model.UploadDataRequest
