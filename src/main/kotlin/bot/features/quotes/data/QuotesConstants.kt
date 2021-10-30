@@ -10,11 +10,18 @@ const val initialQuoteNumber = -1
 const val initialQuoteAuthor = "Y'shtola"
 val initialQuoteDate = Date.from(Instant.parse("2019-07-02T10:15:30.00Z"))!!
 
+// ROLES
+
+const val editQuoteNecessaryRoleName = "Archivist"
+
 
 // COMMANDS
 
-const val quotesCommandName = "quote"
-const val quotesCommandDescription = "Display, add or edit quotes"
+const val accessQuotesCommandName = "quote"
+const val accessQuotesCommandDescription = "Display or add quotes"
+
+const val modifyQuotesCommandName = "editquote"
+const val modifyQuotesCommandDescription = "Edit or remove quotes"
 
 const val getQuoteCommandName = "number"
 const val getQuoteCommandDescription = "Display the quote associated to a certain number"
@@ -30,6 +37,7 @@ const val editQuoteCommandGroupDescription = "Edit an existing quote"
 
 const val editQuoteTextCommandName = "text"
 const val editQuoteTextCommandDescription = "Edit the text of a quote"
+
 
 const val editQuoteAuthorCommandName = "author"
 const val editQuoteAuthorCommandDescription = "Edit the author of a quote"

@@ -2,7 +2,7 @@ package bot.features.quotes.data
 
 import bot.features.core.data.DataCheckResult
 import bot.features.core.data.FeatureDataManager
-import bot.features.core.data.GuildId
+import bot.features.core.typealiases.GuildId
 import bot.features.quotes.QuotesFeature
 import bot.features.quotes.model.Quote
 import utils.logging.Log

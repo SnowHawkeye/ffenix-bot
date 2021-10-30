@@ -1,6 +1,7 @@
 package bot.features.core.data
 
 import bot.features.Feature
+import bot.features.core.typealiases.GuildId
 import bot.remote.CONFLICT_CODE
 import bot.remote.client.StorageApiClient
 import bot.remote.service.StorageApiServiceWrapper

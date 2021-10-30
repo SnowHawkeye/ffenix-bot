@@ -1,6 +1,7 @@
 package bot.features.core.data
 
 import bot.features.Feature
+import bot.features.core.typealiases.GuildId
 
 /**
  * Regroups utility functions to centralize the path writing.

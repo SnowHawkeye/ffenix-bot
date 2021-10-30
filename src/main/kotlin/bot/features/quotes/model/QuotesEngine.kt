@@ -1,6 +1,6 @@
 package bot.features.quotes.model
 
-import bot.features.core.data.GuildId
+import bot.features.core.typealiases.GuildId
 import bot.features.quotes.data.*
 import java.text.SimpleDateFormat
 import java.time.Instant

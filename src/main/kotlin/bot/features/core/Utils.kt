@@ -25,14 +25,3 @@ suspend fun Kord.addChatInputCommandForEveryGuild(
         )
     }
 }
-
-suspend fun Kord.addMessageInputCommandForEveryGuild(
-    name: String,
-): List<GuildMessageCommand> {
-    return guilds.toList().map { guild ->
-        createGuildMessageCommand(
-            guildId = guild.id,
-            name = name
-        )
-    }
-}

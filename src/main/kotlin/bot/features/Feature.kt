@@ -1,6 +1,7 @@
 package bot.features
 
 import bot.features.core.data.FeatureDataContract
+import bot.features.core.permissions.FeatureRolesContract
 import dev.kord.core.Kord
 import dev.kord.core.entity.Guild
 
@@ -13,6 +14,8 @@ abstract class Feature {
      * Using this ensures that data is initialized when it needs to be.
      */
     protected open val featureDataContract: FeatureDataContract = FeatureDataContract.RequiresNoData
+    protected open val featureRolesContract: FeatureRolesContract = FeatureRolesContract.RequiresNoRoles
+
     open val name: String = this.javaClass.name
 
     /**

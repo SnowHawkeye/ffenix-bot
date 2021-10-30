@@ -1,4 +1,4 @@
-package bot.features.core.data
+package bot.features.core.typealiases
 
 import dev.kord.common.entity.Snowflake
 

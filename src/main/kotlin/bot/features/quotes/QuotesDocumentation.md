@@ -2,7 +2,11 @@
 
 `/quote`
 
-Display, add or edit quotes.
+Display or add quotes.
+
+`/editquote`
+
+Edit or remove quotes. Requires the **Archivist** role.
 
 "*Hah. None of that cheek, or I will take you across my knee.*" - Y'shtola **(Jun 02, 2019)**
 
@@ -47,11 +51,11 @@ The `Make quote` message command adds the designated message as a quote.
 
 ## Editing an existing quote
 
-`/quote edit text [number] [newText]`
+`/editquote edit text [number] [newText]`
 
 Edit the text of a quote. Requires the **Archivist** role.
 
-`/quote edit author [number] [newAuthor]`
+`/editquote edit author [number] [newAuthor]`
 
 Edit the author of a quote. Requires the **Archivist** role.
 
@@ -65,7 +69,7 @@ Edit the author of a quote. Requires the **Archivist** role.
 
 ## Removing an existing quote
 
-`/quote remove [number]`
+`/editquote remove [number]`
 
 Remove the designated quote. Requires the **Archivist** role.
 
