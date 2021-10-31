@@ -8,9 +8,9 @@ Bot commands are listed [here](./Specifications.md)!
 Underneath is a summary of the planned features and their progress:
 
 - [ ] Scheduling
-- [ ] Guides
+- [x] Guides
 - [ ] Achievements
-- [ ] Quotes
+- [x] Quotes
 - [ ] Jail
 - [ ] UwU
 - [ ] Permissions

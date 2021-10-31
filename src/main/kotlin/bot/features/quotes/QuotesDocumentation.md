@@ -43,7 +43,7 @@ Add a quote to the bot's known list of quotes for this server.
 | `text` | String | The quote to add. No need for quotation marks. | Yes |
 | `author` | String | The author of the quote. | Yes |
 
-### Adding with a message command
+### [Upcoming] Adding with a message command
 
 The `Make quote` message command adds the designated message as a quote.
 

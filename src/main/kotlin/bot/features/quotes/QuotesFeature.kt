@@ -11,7 +11,6 @@ import bot.features.core.permissions.PermissionsHelper
 import bot.features.quotes.data.*
 import bot.features.quotes.model.QuotesEngine
 import bot.features.quotes.subcommands.*
-import dev.kord.common.Color
 import dev.kord.core.Kord
 import dev.kord.core.entity.application.GuildChatInputCommand
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
@@ -32,7 +31,7 @@ object QuotesFeature : Feature() {
     )
 
     private val editQuoteNecessaryRole =
-        NecessaryRole(roleName = editQuoteNecessaryRoleName, color = Color(rgb = 0x60BF94))
+        NecessaryRole(roleName = editQuoteNecessaryRoleName, color = editQuoteNecessaryRoleColor)
 
     override val featureRolesContract = FeatureRolesContract.RequiresRoles(
         necessaryRoles = setOf(editQuoteNecessaryRole)

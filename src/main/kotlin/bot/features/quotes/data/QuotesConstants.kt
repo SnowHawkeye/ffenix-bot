@@ -1,5 +1,6 @@
 package bot.features.quotes.data
 
+import dev.kord.common.Color
 import java.time.Instant
 import java.util.*
 
@@ -13,6 +14,7 @@ val initialQuoteDate = Date.from(Instant.parse("2019-07-02T10:15:30.00Z"))!!
 // ROLES
 
 const val editQuoteNecessaryRoleName = "Archivist"
+val editQuoteNecessaryRoleColor = Color(rgb = 0x60BF94)
 
 
 // COMMANDS

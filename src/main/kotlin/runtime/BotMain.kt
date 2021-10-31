@@ -1,6 +1,7 @@
 package runtime
 
 import bot.FFEnixBot
+import bot.features.guides.GuidesFeature
 import bot.features.quotes.QuotesFeature
 import dev.kord.core.Kord
 
@@ -10,7 +11,8 @@ suspend fun main() {
     val client = Kord(token)
     FFEnixBot(
         client = client, features = setOf(
-            QuotesFeature
+            QuotesFeature,
+            GuidesFeature,
         )
     ).start()
 }
