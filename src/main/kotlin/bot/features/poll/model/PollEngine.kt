@@ -5,7 +5,6 @@ import bot.features.poll.data.minPollOptionsNumber
 import bot.features.poll.data.pollDefaultThumbnailUrl
 import bot.features.poll.data.reactionEmojisUnicode
 import bot.features.poll.model.results.PollCreationResult
-import dev.kord.core.entity.ReactionEmoji
 import kotlinx.datetime.Instant
 import kotlin.random.Random
 
@@ -28,9 +27,11 @@ class PollEngine(
         val pollMaxAnswers = maxAnswers ?: Int.MAX_VALUE
         val pollThumbnailUrl = thumbnailUrl ?: pollDefaultThumbnailUrl
 
-        val pollOptions = stringPollOptions.map {
-            PollOption(emojiUnicode = reactionEmojisUnicode.random(rng), option = it)
-        }
+
+        val emojisToMap = reactionEmojisUnicode.pickElementsAtRandom(stringPollOptions.size, rng)
+        val optionsToEmojis = stringPollOptions.zip(emojisToMap)
+
+        val pollOptions = optionsToEmojis.map { PollOption(option = it.first, emojiUnicode = it.second) }
 
         val poll = Poll(
             question = question,
@@ -50,6 +51,19 @@ class PollEngine(
         options.forEach { if (it.isEmpty()) toRemove.add(it) }
         options.removeAll(toRemove)
         return options
+    }
+
+    private fun <T> List<T>.pickElementsAtRandom(n: Int, rng: Random): List<T> {
+        if (n >= size) return this
+        if (n <= 0) return listOf()
+        val poolOfElements = this.toMutableList()
+        val elementsToReturn = mutableListOf<T>()
+        repeat(n) {
+            val newElement = poolOfElements.random(rng)
+            elementsToReturn.add(newElement)
+            poolOfElements.remove(newElement)
+        }
+        return elementsToReturn
     }
 
     companion object {

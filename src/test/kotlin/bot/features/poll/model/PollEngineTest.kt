@@ -120,7 +120,7 @@ internal class PollEngineTest {
                 timestamp = timestamp,
                 options = listOf(
                     PollOption("\uD83D\uDD25", "a"),
-                    PollOption("\uD83C\uDFD3", "b"),
+                    PollOption("\uD83D\uDE82", "b"),
                 )
             )
         )
@@ -161,7 +161,7 @@ internal class PollEngineTest {
                 timestamp = timestamp,
                 options = listOf(
                     PollOption("\uD83D\uDD25", "a"),
-                    PollOption("\uD83C\uDFD3", "b"),
+                    PollOption("\uD83D\uDE82", "b"),
                 )
             )
         )
