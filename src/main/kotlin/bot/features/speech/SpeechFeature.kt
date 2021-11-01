@@ -68,18 +68,27 @@ object SpeechFeature : Feature() {
                             if (it.name == uwuSpeechActivateArgumentName)
                                 activate = it.value as Boolean
                         }
-
-                        when (engine.setUwuMode(activate, interaction.guildId)) {
-                            SetUwuModeResult.Failure -> ephemeralResponse(genericErrorMessage)
-                            SetUwuModeResult.Success -> {
-                                if (activate) publicResponse(updateSpeechPatternActivateSuccessMessage)
-                                else ephemeralResponse(updateSpeechPatternDeactivateSuccessMessage)
-                            }
-                        }
+                        manageUwuSpeechPattern(activate)
                     }
                 }
             }
 
+        }
+    }
+
+    private suspend fun GuildChatInputCommandInteractionCreateEvent.manageUwuSpeechPattern(
+        activate: Boolean
+    ) {
+        val isUwuModeAlreadyActivated = engine.isUwuModeActivated(interaction.guildId)
+        if (isUwuModeAlreadyActivated && activate) ephemeralResponse(uwuSpeechAlreadyActivatedMessage)
+        else {
+            when (engine.setUwuMode(activate, interaction.guildId)) {
+                SetUwuModeResult.Failure -> ephemeralResponse(genericErrorMessage)
+                SetUwuModeResult.Success -> {
+                    if (activate) publicResponse(updateSpeechPatternActivateSuccessMessage)
+                    else ephemeralResponse(updateSpeechPatternDeactivateSuccessMessage)
+                }
+            }
         }
     }
 }
