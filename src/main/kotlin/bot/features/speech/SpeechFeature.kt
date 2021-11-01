@@ -58,24 +58,28 @@ object SpeechFeature : Feature() {
     }
 
     private suspend fun GuildChatInputCommandInteractionCreateEvent.setUwuSpeechPattern() {
-        addChatInputCommandResponse(uwuSpeechCommands) { option ->
-            if (option.value.value?.name == uwuSpeechActivateArgumentName) {
-                option.value.value?.let {
-                    var activate = false
-                    catchCastExceptions {
-                        if (it.name == uwuSpeechActivateArgumentName)
-                            activate = it.value as Boolean
-                    }
+        addChatInputCommandResponse(uwuSpeechCommands) {
+            val options = interaction.data.data.options
+            options.value?.forEach { option ->
+                if (option.value.value?.name == uwuSpeechActivateArgumentName) {
+                    option.value.value?.let {
+                        var activate = false
+                        catchCastExceptions {
+                            if (it.name == uwuSpeechActivateArgumentName)
+                                activate = it.value as Boolean
+                        }
 
-                    when (engine.setUwuMode(activate, interaction.guildId)) {
-                        SetUwuModeResult.Failure -> ephemeralResponse(genericErrorMessage)
-                        SetUwuModeResult.Success -> {
-                            if (activate) publicResponse(updateSpeechPatternActivateSuccessMessage)
-                            else ephemeralResponse(updateSpeechPatternDeactivateSuccessMessage)
+                        when (engine.setUwuMode(activate, interaction.guildId)) {
+                            SetUwuModeResult.Failure -> ephemeralResponse(genericErrorMessage)
+                            SetUwuModeResult.Success -> {
+                                if (activate) publicResponse(updateSpeechPatternActivateSuccessMessage)
+                                else ephemeralResponse(updateSpeechPatternDeactivateSuccessMessage)
+                            }
                         }
                     }
                 }
             }
+
         }
     }
 }

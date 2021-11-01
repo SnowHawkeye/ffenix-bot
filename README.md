@@ -9,10 +9,10 @@ Underneath is a summary of the planned features and their progress:
 
 - [ ] Scheduling
 - [x] Guides
-- [ ] Achievements
+- [ ] Achievements [?]
 - [x] Quotes
 - [ ] Jail
-- [ ] UwU
-- [ ] Permissions
+- [x] UwU
+- [ ] ~~Permissions~~ [Became useless with the use of roles]
 - [ ] Info commands
 - [ ] Utility

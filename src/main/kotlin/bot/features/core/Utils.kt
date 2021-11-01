@@ -3,7 +3,6 @@ package bot.features.core
 import dev.kord.core.Kord
 import dev.kord.core.behavior.interaction.respondEphemeral
 import dev.kord.core.behavior.interaction.respondPublic
-import dev.kord.core.cache.data.OptionData
 import dev.kord.core.entity.application.GuildChatInputCommand
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
 import dev.kord.core.event.interaction.InteractionCreateEvent
@@ -33,13 +32,10 @@ suspend fun Kord.addChatInputCommandForEveryGuild(
 
 suspend fun GuildChatInputCommandInteractionCreateEvent.addChatInputCommandResponse(
     commands: List<GuildChatInputCommand>,
-    howToProcessOptions: suspend (OptionData) -> Unit
+    howToProcessOptions: suspend () -> Unit
 ) {
     val invokedCommand = commands.find { it.id == interaction.invokedCommandId }
-    if (invokedCommand != null) {
-        val options = interaction.data.data.options
-        options.value?.forEach { option -> howToProcessOptions(option) }
-    }
+    if (invokedCommand != null) { howToProcessOptions() }
 }
 
 suspend fun catchCastExceptions(block: suspend () -> Unit) {

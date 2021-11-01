@@ -66,21 +66,27 @@ object GuidesFeature : Feature() {
 
     override suspend fun Kord.addFeatureResponses() {
         on<GuildChatInputCommandInteractionCreateEvent> {
-            addChatInputCommandResponse(accessGuidesCommands) { option ->
-                when (option.name) {
-                    getGuideCommandName ->
-                        GetGuideSubcommand.getGuide(engine, option, interaction.guildId, this)
-                    getGuideCategoriesCommandName ->
-                        GetGuideCategoriesSubcommand.getGuideCategories(engine, interaction.guildId, this)
+            addChatInputCommandResponse(accessGuidesCommands) {
+                val options = interaction.data.data.options
+                options.value?.forEach { option ->
+                    when (option.name) {
+                        getGuideCommandName ->
+                            GetGuideSubcommand.getGuide(engine, option, interaction.guildId, this)
+                        getGuideCategoriesCommandName ->
+                            GetGuideCategoriesSubcommand.getGuideCategories(engine, interaction.guildId, this)
+                    }
                 }
             }
 
-            addChatInputCommandResponse(editGuidesCommands) { option ->
-                val guildId = interaction.guildId
-                when (option.name) {
-                    addGuidesCommandName -> AddGuidesSubcommand.addGuides(engine, option, guildId, this)
-                    editGuidesCommandName -> EditGuidesSubcommand.editGuides(engine, option, guildId, this)
-                    removeGuidesCommandName -> RemoveGuidesSubcommand.removeGuides(engine, option, guildId, this)
+            addChatInputCommandResponse(editGuidesCommands) {
+                val options = interaction.data.data.options
+                options.value?.forEach { option ->
+                    val guildId = interaction.guildId
+                    when (option.name) {
+                        addGuidesCommandName -> AddGuidesSubcommand.addGuides(engine, option, guildId, this)
+                        editGuidesCommandName -> EditGuidesSubcommand.editGuides(engine, option, guildId, this)
+                        removeGuidesCommandName -> RemoveGuidesSubcommand.removeGuides(engine, option, guildId, this)
+                    }
                 }
             }
         }

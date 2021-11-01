@@ -8,8 +8,8 @@ Display guide categories and guides. A guide category can have up to 25 guides.
 
 Add, edit or remove guides. Requires the **Strategist** role.
 
-Guides are
-displayed [like this](https://cdn.discordapp.com/attachments/904320277842915348/904320295706460180/unknown.png).
+Guides should be displayed like this:
+![](https://cdn.discordapp.com/attachments/904320277842915348/904320295706460180/unknown.png).
 
 ***
 
