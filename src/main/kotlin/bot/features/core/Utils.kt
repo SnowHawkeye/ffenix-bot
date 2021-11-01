@@ -2,6 +2,7 @@ package bot.features.core
 
 import dev.kord.core.Kord
 import dev.kord.core.behavior.interaction.respondEphemeral
+import dev.kord.core.behavior.interaction.respondPublic
 import dev.kord.core.cache.data.OptionData
 import dev.kord.core.entity.application.GuildChatInputCommand
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
@@ -41,7 +42,7 @@ suspend fun GuildChatInputCommandInteractionCreateEvent.addChatInputCommandRespo
     }
 }
 
-suspend fun catchCastExceptions(block: () -> Unit) {
+suspend fun catchCastExceptions(block: suspend () -> Unit) {
     try {
         block()
     } catch (e: ClassCastException) {
@@ -53,4 +54,8 @@ suspend fun catchCastExceptions(block: () -> Unit) {
 
 suspend fun InteractionCreateEvent.ephemeralResponse(message: String) {
     interaction.respondEphemeral { content = message }
+}
+
+suspend fun InteractionCreateEvent.publicResponse(message: String) {
+    interaction.respondPublic { content = message }
 }

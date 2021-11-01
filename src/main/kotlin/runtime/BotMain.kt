@@ -3,6 +3,7 @@ package runtime
 import bot.FFEnixBot
 import bot.features.guides.GuidesFeature
 import bot.features.quotes.QuotesFeature
+import bot.features.speech.SpeechFeature
 import dev.kord.core.Kord
 
 suspend fun main() {
@@ -13,6 +14,7 @@ suspend fun main() {
         client = client, features = setOf(
             QuotesFeature,
             GuidesFeature,
+            SpeechFeature,
         )
     ).start()
 }
