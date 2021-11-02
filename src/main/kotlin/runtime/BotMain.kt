@@ -4,6 +4,7 @@ import bot.FFEnixBot
 import bot.features.guides.GuidesFeature
 import bot.features.poll.PollFeature
 import bot.features.quotes.QuotesFeature
+import bot.features.scheduling.SchedulingFeature
 import bot.features.speech.SpeechFeature
 import dev.kord.core.Kord
 
@@ -17,6 +18,7 @@ suspend fun main() {
             SpeechFeature,
             GuidesFeature,
             QuotesFeature,
+            SchedulingFeature,
         )
     ).start()
 }

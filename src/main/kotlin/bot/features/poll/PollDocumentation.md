@@ -9,11 +9,11 @@ Create a simple emoji-based poll. The poll is displayed as an embed that looks l
 The emojis are picked at random. The bot will then react to its own message with those emojis.  
 If a maximum number of answers is set, the bot will remove any extra answers.
 
-IMPORTANT NOTES : 
-- This feature requires the bot to have the MANAGE_MESSAGES permission.
-If it does not, reaction numbers cannot be enforced.
-- If the bot is rebooted, reaction numbers will not be enforced for all polls that were created prior to the reboot.
+IMPORTANT NOTES :
 
+- This feature requires the bot to have the MANAGE_MESSAGES permission. If it does not, reaction numbers cannot be
+  enforced.
+- If the bot is rebooted, reaction numbers will not be enforced for all polls that were created prior to the reboot.
 
 ***
 

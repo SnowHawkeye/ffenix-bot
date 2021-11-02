@@ -10,8 +10,8 @@
 
 `/speech uwu [activate]`
 
-When `activate` is set to `true`, causes the bot to edit all of its public messages, turning R's into W's.
-This does not affect ephemeral messages.
+When `activate` is set to `true`, causes the bot to edit all of its public messages, turning R's into W's. This does not
+affect ephemeral messages.
 
 | Argument | Type | Description | Required? |
 |:---:|:---:|:---|:---:|

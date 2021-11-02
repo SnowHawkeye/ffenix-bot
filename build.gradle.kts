@@ -7,6 +7,10 @@ plugins {
 group = "me.shadr"
 version = "1.0-SNAPSHOT"
 
+kotlin.sourceSets.all {
+    languageSettings.useExperimentalAnnotation("kotlin.RequiresOptIn")
+}
+
 repositories {
     mavenCentral()
 }
@@ -21,12 +25,14 @@ dependencies {
     val okHttpVersion = "4.9.2"
     val jColorVersion = "5.2.0"
     val mockitoVersion = "4.0.0"
+    val jupiterVersion = "5.7.0"
 
     // Unit testing
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinTestVersion")
     testImplementation("com.squareup.okhttp3:mockwebserver:$okHttpVersion")
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$jupiterVersion")
 
     // Kord
     implementation("dev.kord:kord-core:$kordVersion")
@@ -54,7 +60,7 @@ tasks {
     }
 }
 
-tasks.withType<Jar>() {
+tasks.withType<Jar> {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest { attributes["Main-Class"] = "runtime/BotMainKt" }
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
@@ -64,6 +70,6 @@ tasks.withType<Jar>() {
     exclude("META-INF/INDEX.LIST")
 }
 
-tasks.withType<KotlinCompile>() {
+tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }

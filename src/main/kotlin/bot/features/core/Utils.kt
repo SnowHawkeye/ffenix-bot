@@ -32,10 +32,12 @@ suspend fun Kord.addChatInputCommandForEveryGuild(
 
 suspend fun GuildChatInputCommandInteractionCreateEvent.addChatInputCommandResponse(
     commands: List<GuildChatInputCommand>,
-    howToProcessOptions: suspend () -> Unit
+    whatToDoWhenCommandInvoked: suspend () -> Unit
 ) {
     val invokedCommand = commands.find { it.id == interaction.invokedCommandId }
-    if (invokedCommand != null) { howToProcessOptions() }
+    if (invokedCommand != null) {
+        whatToDoWhenCommandInvoked()
+    }
 }
 
 suspend fun catchCastExceptions(block: suspend () -> Unit) {
