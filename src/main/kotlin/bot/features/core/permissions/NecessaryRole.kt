@@ -4,5 +4,6 @@ import dev.kord.common.Color
 
 data class NecessaryRole(
     val roleName: String,
-    val color: Color? = null
+    val color: Color? = null,
+    val hoist: Boolean = false,
 )

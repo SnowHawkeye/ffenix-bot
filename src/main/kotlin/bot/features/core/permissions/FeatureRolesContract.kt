@@ -34,6 +34,7 @@ sealed class FeatureRolesContract {
                     guild.createRole {
                         name = necessaryRole.roleName
                         color = necessaryRole.color
+                        hoist = necessaryRole.hoist
                     }
                     Log.info("Attempted to create role ${necessaryRole.roleName} in guild ${guild.name} (ID: ${guild.id})")
                 }

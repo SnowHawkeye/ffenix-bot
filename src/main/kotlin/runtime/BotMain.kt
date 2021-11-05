@@ -1,6 +1,7 @@
 package runtime
 
 import bot.FFEnixBot
+import bot.features.bonk.BonkFeature
 import bot.features.guides.GuidesFeature
 import bot.features.poll.PollFeature
 import bot.features.quotes.QuotesFeature
@@ -19,6 +20,7 @@ suspend fun main() {
             GuidesFeature,
             QuotesFeature,
             SchedulingFeature,
+            BonkFeature,
         )
     ).start()
 }

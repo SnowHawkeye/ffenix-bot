@@ -14,7 +14,6 @@ import bot.features.scheduling.subcommands.*
 import dev.kord.core.Kord
 import dev.kord.core.behavior.interaction.respondEphemeral
 import dev.kord.core.entity.application.GuildChatInputCommand
-import dev.kord.core.event.interaction.GlobalChatInputCommandInteractionCreateEvent
 import dev.kord.core.event.interaction.GuildChatInputCommandInteractionCreateEvent
 import dev.kord.core.on
 import dev.kord.rest.builder.interaction.*
@@ -68,9 +67,6 @@ object SchedulingFeature : Feature() {
 
 
     override suspend fun Kord.addFeatureResponses() {
-        on<GlobalChatInputCommandInteractionCreateEvent> {
-        }
-
         on<GuildChatInputCommandInteractionCreateEvent> {
             addChatInputCommandResponse(getTimezonesCommands) { getTimezonesResponses() }
             addChatInputCommandResponse(displayScheduleCommands) { displayScheduleResponses(this@addFeatureResponses) }
