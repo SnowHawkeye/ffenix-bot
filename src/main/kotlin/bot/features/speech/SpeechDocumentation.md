@@ -1,14 +1,11 @@
 # Speech modifiers
 
-`/speech`
-
-![](https://risibank.fr/cache/stickers/d768/76838-full.jpg)
-
-***
+Change the way the bot expresses its feelings.
 
 ## Cute mode
+![](https://risibank.fr/cache/stickers/d768/76838-full.jpg)
 
-`/speech uwu [activate]`
+`/uwu [activate]`
 
 When `activate` is set to `true`, causes the bot to edit all of its public messages, turning R's into W's. This does not
 affect ephemeral messages.
