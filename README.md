@@ -7,11 +7,11 @@ Bot commands are listed [here](./Specifications.md)!
 
 Underneath is a summary of the planned features and their progress:
 
-- [ ] Scheduling
+- [x] Scheduling
 - [x] Guides
-- [ ] Achievements [?]
+- [ ] ~~Achievements~~ [Will be rendered useless by info commands]
 - [x] Quotes
-- [ ] Jail
+- [x] Jail
 - [x] UwU
 - [ ] ~~Permissions~~ [Became useless with the use of roles]
 - [ ] Info commands
