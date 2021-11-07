@@ -53,7 +53,10 @@ class InfoEngine(val repository: InfoRepository) {
 
         return when (repository.updateInfoCommands(updatedCommands, forGuildId)) {
             InfoRepository.UploadInfoCommandsResult.Failure -> EditInfoCommandResult.Failure
-            InfoRepository.UploadInfoCommandsResult.Success -> EditInfoCommandResult.Success(commandToEdit, editedCommand)
+            InfoRepository.UploadInfoCommandsResult.Success -> EditInfoCommandResult.Success(
+                commandToEdit,
+                editedCommand
+            )
         }
     }
 

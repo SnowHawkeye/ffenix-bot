@@ -3,6 +3,7 @@
 Change the way the bot expresses its feelings.
 
 ## Cute mode
+
 ![](https://risibank.fr/cache/stickers/d768/76838-full.jpg)
 
 `/uwu [activate]`

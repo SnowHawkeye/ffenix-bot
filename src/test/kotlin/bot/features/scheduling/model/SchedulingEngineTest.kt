@@ -1810,7 +1810,7 @@ internal class SchedulingEngineTest {
                 DefaultRaidEvent(mondayRaidInstant, "Weekly raid 1", UpcomingCancellation(true, "Close")),
                 DefaultRaidEvent(wednesdayRaidInstant, "Weekly raid 2", UpcomingCancellation(false, null)),
                 ExceptionalRaidEvent(closeExceptionalRaidInstant, "Close exceptional raid"),
-                )
+            )
         )
 
         Mockito.`when`(mockClock.now()).thenReturn(mockedNow)

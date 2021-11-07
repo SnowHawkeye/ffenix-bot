@@ -1,6 +1,6 @@
 # Info commands
 
-`/info` 
+`/info`
 
 Manage info commands that can be triggered by writing `![commandname]` in a channel.  
 Requires the **Herald** role.
