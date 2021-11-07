@@ -8,6 +8,7 @@ Below is a list of all the current bot's features. Click on any of the features 
 
 | Feature | Commands | Description | Related role |
 |:---:|:---:|---|:---:|
+| [Help](README.md) | `/help` | Bring up help about the FF-Enix bot. | /
 | [Scheduling](src/main/kotlin/bot/features/scheduling/SchedulingDocumentation.md)  | `/nextraids` `/schedule` `/timezones` | Display and manage the raid schedule. | Scheduler
 | [Guides](src/main/kotlin/bot/features/guides/GuidesDocumentation.md) | `/guides` `/editguides` | Display and manage guides. | Strategist
 | [Info commands](src/main/kotlin/bot/features/info/InfoDocumentation.md)  | `/info` | Manage custom info commands. | Herald
@@ -75,7 +76,8 @@ on discord (@SnowHawkeye#4215).
 
 ### Implement new commands
 
-A bot can have up to 100 slash commands per server! Some ideas for future commands include: 
+A bot can have up to 100 slash commands per server! Some ideas for future commands include:
+
 - Info commands as embeds instead of simple text.
 - A reminder command `/remind @thisPerson thatThing atThisDate`.
 - A currency / gamble system.

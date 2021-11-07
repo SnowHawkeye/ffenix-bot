@@ -3,6 +3,7 @@ package runtime
 import bot.FFEnixBot
 import bot.features.bonk.BonkFeature
 import bot.features.guides.GuidesFeature
+import bot.features.help.HelpFeature
 import bot.features.info.InfoFeature
 import bot.features.poll.PollFeature
 import bot.features.quotes.QuotesFeature
@@ -16,6 +17,7 @@ suspend fun main() {
     val client = Kord(token)
     FFEnixBot(
         client = client, features = setOf(
+            HelpFeature,
             PollFeature,
             SpeechFeature,
             GuidesFeature,
