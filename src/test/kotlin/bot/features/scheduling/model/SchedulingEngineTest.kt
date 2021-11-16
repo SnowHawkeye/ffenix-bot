@@ -1953,11 +1953,13 @@ internal class SchedulingEngineTest {
             )
         )
 
+        val pastExceptionalRaidInstant = LocalDateTime.parse("1202-01-04T00:00:00.00").toInstant(TimeZone.UTC)
         val farawayExceptionalRaidInstant = LocalDateTime.parse("2103-01-04T00:00:00.00").toInstant(TimeZone.UTC)
         val closeExceptionalRaidInstant = LocalDateTime.parse("2021-11-11T18:00:00.00").toInstant(TimeZone.UTC)
+        val pastExceptionalRaid = ExceptionalRaid(pastExceptionalRaidInstant, "Past exceptional raid")
         val farawayExceptionalRaid = ExceptionalRaid(farawayExceptionalRaidInstant, "Faraway exceptional raid")
         val closeExceptionalRaid = ExceptionalRaid(closeExceptionalRaidInstant, "Close exceptional raid")
-        val exceptionalRaids = listOf(farawayExceptionalRaid, closeExceptionalRaid)
+        val exceptionalRaids = listOf(pastExceptionalRaid, farawayExceptionalRaid, closeExceptionalRaid)
 
         val farawayCancelledRaidInstant = LocalDateTime.parse("2023-02-27T19:00:00.00").toInstant(TimeZone.UTC)
         val closeCancelledRaidInstant = LocalDateTime.parse("2021-11-08T19:00:00.00").toInstant(TimeZone.UTC)
@@ -1965,15 +1967,18 @@ internal class SchedulingEngineTest {
         val closeCancelledRaid = CancelledDefaultRaid(closeCancelledRaidInstant, "Close")
         val cancelledRaids = listOf(farawayCancelledRaid, closeCancelledRaid)
 
+        val pastAbsenceDate =
+            LocalDate.parse("24/04/1202", DateTimeFormatter.ofPattern(dateFormattingPattern)).toKotlinLocalDate()
         val farawayAbsenceDate =
             LocalDate.parse("24/04/2023", DateTimeFormatter.ofPattern(dateFormattingPattern)).toKotlinLocalDate()
         val closeAbsenceDate =
             LocalDate.parse("08/11/2021", DateTimeFormatter.ofPattern(dateFormattingPattern)).toKotlinLocalDate()
         val userId1 = Snowflake(1)
         val userId2 = Snowflake(2)
+        val pastAbsence = Absence(pastAbsenceDate, userId1, "Past absence")
         val farawayAbsence = Absence(farawayAbsenceDate, userId1, "Faraway absence")
         val closeAbsence = Absence(closeAbsenceDate, userId2, "Close absence")
-        val absences = listOf(farawayAbsence, closeAbsence)
+        val absences = listOf(pastAbsence, farawayAbsence, closeAbsence)
 
         val completeSchedule = Schedule(
             defaultRaidSchedule = defaultRaidSchedule,

@@ -408,6 +408,7 @@ class SchedulingEngine(
         val upcomingEventsWithExceptionalRaids =
             upcomingDefaultRaidsWithCancellations.toMutableList<UpcomingEvent>().apply {
                 addAll(existingSchedule.exceptionalRaids.map { ExceptionalRaidEvent(it.timestamp, it.comment) })
+                removeIf { it.referenceTimestamp < clock.now() }
                 sortBy { it.referenceTimestamp }
             }
 
@@ -418,6 +419,7 @@ class SchedulingEngine(
         val upcomingEvents = upcomingEventsWithoutAbsences.toMutableList().apply {
             addAll(existingSchedule.absences.map { AbsenceEvent(it.date, it.userId, it.comment) })
             removeIf { it.referenceTimestamp > targetTimestamp }
+            removeIf { it.referenceTimestamp < clock.now() }
             sortBy { it.referenceTimestamp }
         }
 
@@ -441,14 +443,13 @@ class SchedulingEngine(
         val upcomingDefaultRaidsWithCancellations =
             makeDefaultRaidsWithCancellationsUntil(withSchedule, withTimezoneId, untilInstant)
 
-        val upcomingEvents = upcomingDefaultRaidsWithCancellations.toMutableList<UpcomingEvent>().apply {
+        return upcomingDefaultRaidsWithCancellations.toMutableList<UpcomingEvent>().apply {
             addAll(withSchedule.exceptionalRaids.map { ExceptionalRaidEvent(it.timestamp, it.comment) })
             addAll(withSchedule.absences.map { AbsenceEvent(it.date, it.userId, it.comment) })
             removeIf { it.referenceTimestamp > untilInstant }
+            removeIf { it.referenceTimestamp < clock.now() }
             sortBy { it.referenceTimestamp }
         }
-
-        return upcomingEvents
     }
 
     @OptIn(ExperimentalTime::class)
