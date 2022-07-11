@@ -89,4 +89,4 @@ Discord's API allows for commands that are available directly by right-clicking 
 interesting possibilities, I have had inexplicable issues using them that seemed to be either on Kord's or Discord's
 side. Implementing them will require some more exploring and testing.
 
-
+test test
